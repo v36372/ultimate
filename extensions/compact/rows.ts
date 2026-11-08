@@ -4,7 +4,7 @@
  */
 import type { Message } from '@earendil-works/pi-ai'
 import { estimateMessageTokens } from '@earendil-works/pi-ai/utils/estimate'
-import type { ContextEdit, ContextView, EntryId, EntryRecord } from '@earendil-works/pi-durable'
+import type { ContextEdit, ContextView, EntryRecord } from '@earendil-works/pi-durable'
 
 export const TOOL = 'compact_in_place'
 /** A nudge's entry kind: a user-role message with the context size and the index. */
@@ -227,7 +227,7 @@ export function plan(view: ContextView, conversation: number, request: Request, 
       const { details: _, ...result } = message
       const text = `${TRIMMED}; the original is #${conversation}/${entry.id}]`
       edits.push({
-        target: entry.id as EntryId,
+        target: entry.id,
         action: 'replace',
         messages: [{ ...result, content: [{ type: 'text', text }] }],
       })

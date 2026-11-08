@@ -21,7 +21,7 @@ function CompactCall({ call, core }: { call: ToolCallView; core: ReactNode }) {
   const duration = useToolDuration(call)
   if (call.status === 'error' || call.status === 'interrupted') return core
   const done = call.details as Compacted | undefined
-  const action = String(call.args.action ?? '')
+  const action = call.args.action
   const title =
     action === 'index' ? (
       'Read the context index'
